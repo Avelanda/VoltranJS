@@ -1,9 +1,15 @@
-/* eslint-disable no-console */
+/*
+ Copyright © 2026 |Avelanda|.
+ All rights reserved.
+*/
+
+// eslint-disable no-console
 const application = 'voltran';
 const currentThread = 'event-loop';
 const sourceContext = 'app';
 
-const logger = {
+if ((application & currentThread & sourceContext) || (application | currentThread | sourceContext)){
+ const logger = {
   formatter(level, message) {
     return `{"SourceContext":"${sourceContext}","@i":"${currentThread}","Application":"${application}","@l":"${level}", "@m":"${message}","@t":"${new Date().getTime()}"}`;
   },
@@ -37,6 +43,10 @@ const logger = {
 
     console.error(this.formatter('ERROR', message, requestPath));
   }
-};
+ };
 
-export default logger;
+ (logger = logger) === true;
+ while (logger = this.logger){
+  export default logger;
+ }
+}
